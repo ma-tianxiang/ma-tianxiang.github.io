@@ -216,7 +216,7 @@
 <p>在函数中，不使用var声明的变量都会成为全局变量，必须使用！！</p>
 <p>定义形参就相当于在函数作用域中声明变量⭐️⭐️⭐️<br>var e=23;<br>function fun(e){<br>    alert(e)      // 相当于var e;alert (e);<br>}<br>fun();<br>输出undefined  </p>
 <hr>
-<h2 id="3-变量声明提前"><a href="#3-变量声明提前" class="headerlink" title="3 变量声明提前"></a>3 变量声明提前</h2><p>-使用var关键字声明的变量，会在所有的代码执行前被声明。<br>  若不使用var关键字声明，变量不会被声明提前<br> console.log(“a=”+a);       console.log(“a=”+a);<br> a=123;                     var a=123;（相当于在console语句上面var a；在此处 a=123;)<br> 此处输出结果报错              此处输出undifined（声明但未赋值）</p>
+<h2 id="3-变量声明提前"><a href="#3-变量声明提前" class="headerlink" title="3 变量声明提前"></a>3 变量声明提前</h2><p>-使用var关键字声明的变量，会在所有的代码执行前被声明。<br>  若不使用var关键字声明，变量不会被声明提前<br> console.log(“a=”+a);<br> a=123;<br> 此处输出结果报错<br> console.log(“a=”+a);<br> var a=123;（相当于在console语句上面var a；在此处 a=123;)<br> 此处输出undifined（声明但未赋值）</p>
 <hr>
 <h2 id="4-函数声明提前"><a href="#4-函数声明提前" class="headerlink" title="4 函数声明提前"></a>4 函数声明提前</h2><p>-使用函数声明形式创建的函数function函数（）{}<br> 他会在所有的代码执行前就被创建，我们可以在函数声明语句前调用<br>-但使用函数表达式创建的函数，不会被声明提前，不能在声明前调用</p>
 <hr>
