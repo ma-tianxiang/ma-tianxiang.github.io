@@ -6,14 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives | Hexo</title>
+  <title>javascript作用域及提前声明 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/archives/index.html">
+  <meta name="description" content="1 全局作用域 -直接编写在script标签中的JS代码，都在全局作用域 -全局作用域在页面打开时（javascript解释器启动时）创建，页面关闭时销毁 -在全局作用域中，有一个全局对象Window，它代表的是一个浏览器的窗口，由浏览器创建，可以直接使用。 -在客户端javascript中，在其表示的浏览器窗口中的所有JavaScript代码中，Window对象充当了全局对象。这个全局Windo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="javascript作用域及提前声明">
+<meta property="og:url" content="http://yoursite.com/2020/08/09/javascript%E4%BD%9C%E7%94%A8%E5%9F%9F/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="1 全局作用域 -直接编写在script标签中的JS代码，都在全局作用域 -全局作用域在页面打开时（javascript解释器启动时）创建，页面关闭时销毁 -在全局作用域中，有一个全局对象Window，它代表的是一个浏览器的窗口，由浏览器创建，可以直接使用。 -在客户端javascript中，在其表示的浏览器窗口中的所有JavaScript代码中，Window对象充当了全局对象。这个全局Windo">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-08-09T09:23:09.000Z">
+<meta property="article:modified_time" content="2020-08-09T11:57:32.921Z">
 <meta property="article:author" content="John Doe">
+<meta property="article:tag" content="javascript">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -188,36 +193,82 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-javascript作用域" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/08/09/javascript%E4%BD%9C%E7%94%A8%E5%9F%9F/" class="archive-article-date">
-  	<time datetime="2020-08-09T09:23:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-09</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/08/09/javascript%E4%BD%9C%E7%94%A8%E5%9F%9F/">javascript作用域及提前声明</a>
+    <h1 class="article-title" itemprop="name">
+      javascript作用域及提前声明
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2020/08/09/javascript%E4%BD%9C%E7%94%A8%E5%9F%9F/" class="archive-article-date">
+  	<time datetime="2020-08-09T09:23:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-09</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1-全局作用域"><a href="#1-全局作用域" class="headerlink" title="1 全局作用域"></a>1 全局作用域</h2><p> -直接编写在script标签中的JS代码，都在全局作用域<br> -全局作用域在页面打开时（javascript解释器启动时）创建，页面关闭时销毁<br> -在全局作用域中，有一个全局对象Window，它代表的是一个浏览器的窗口，由浏览器创建，可以直接使用。<br> -在客户端javascript中，在其表示的浏览器窗口中的所有JavaScript代码中，Window对象充当了全局对象。这个全局Window对象有一个window属性引用其自身。<br>-在全局作用域中，创建的变量都会作为window对象的属性保存，创建的函数都会作为window对象的方法保存 </p>
+<hr>
+<h2 id="2-函数作用域"><a href="#2-函数作用域" class="headerlink" title="2 函数作用域"></a>2 函数作用域</h2><p>-调用函数时创建函数作用域，函数执行完毕销毁<br>-每调用一次函数就会创建一个新的函数作用域，他们之间相互独立<br>-在函数作用域中操作一个变量时，它会先在自身作用域中寻找，若无，则向上一级作用域寻找（例如上一级嵌套的函数），直至全局作用域<br>-在函数作用域中访问同名全局变量，可以使用window全局对象<br>var a=10;<br>function fun()<br>{<br> var a=”局部变量a”;<br> function fun2()<br>  {<br>      console.log(“a=”+window.a);<br>  }<br>  fun2();<br>}<br>输出结果”a=10”<br>-在函数作用域中也有声明提前的特性，<br>   使用var关键字声明的变量，会在函数中所有代码执行之前被声明，即变量在声明它们的函数体以及这个函数体嵌套的任意函数体都是有定义的（此处也应⭐️）<br>   函数声明也会在函数中所有代码执行之前声明<br>   var scope=”global”;<br>   function f()<br>   {<br>       console.log(scope); //输出”undefined”,而不是”global”<br>       var scope=”local”;<br>       console.log(scope) //输出“local”<br>   }<br>   你可能会误以为第一句输出是”global”,其实是:”undefined”.根据语法，它在自身作用域中找到了var的声明提前，所以不会选择上一级全局变量scope</p>
+<p>在函数中，不使用var声明的变量都会成为全局变量，必须使用！！</p>
+<p>定义形参就相当于在函数作用域中声明变量⭐️⭐️⭐️<br>var e=23;<br>function fun(e){<br>    alert(e)      // 相当于var e;alert (e);<br>}<br>fun();<br>输出undefined  </p>
+<hr>
+<h2 id="3-变量声明提前"><a href="#3-变量声明提前" class="headerlink" title="3 变量声明提前"></a>3 变量声明提前</h2><p>-使用var关键字声明的变量，会在所有的代码执行前被声明。<br>  若不使用var关键字声明，变量不会被声明提前<br> console.log(“a=”+a);       console.log(“a=”+a);<br> a=123;                     var a=123;（相当于在console语句上面var a；在此处 a=123;)<br> 此处输出结果报错              此处输出undifined（声明但未赋值）</p>
+<hr>
+<h2 id="4-函数声明提前"><a href="#4-函数声明提前" class="headerlink" title="4 函数声明提前"></a>4 函数声明提前</h2><p>-使用函数声明形式创建的函数function函数（）{}<br> 他会在所有的代码执行前就被创建，我们可以在函数声明语句前调用<br>-但使用函数表达式创建的函数，不会被声明提前，不能在声明前调用</p>
+<hr>
+<h2 id="5-练习"><a href="#5-练习" class="headerlink" title="5 练习"></a>5 练习</h2><p>1 var a=123;<br>function fun(){<br>    alert(a);<br>    var a=456;<br>}<br>fun();<br>alert(a);     </p>
+<p>2 var a=123;<br>function fun(){<br>    alert(a);<br>    a=456;<br>}<br>fun();<br>alert(a);    </p>
+<p>3 var a=123;<br>function fun(a){<br>     alert(a);<br>     a=456;<br>}<br>fun();<br>alert(a);               </p>
+<p>4 var a=123;<br>function fun(a){<br>     alert(a);<br>     a=456;<br>}<br>fun(123);<br>alert(a);       </p>
+<p>1 undefined;123<br>2 undefined;456<br>3 undefined;123 形参=var a;alert(a);a=456 即var a=456;alert(a);<br>4 123;123</p>
+<hr>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p>Javascript权威指南<br>尚硅谷javascript基础 <a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1YW411T7GX">https://www.bilibili.com/video/BV1YW411T7GX</a>?</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/images/zhifubao.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/images/weixin.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -229,73 +280,137 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/08/09/javascript%E4%BD%9C%E7%94%A8%E5%9F%9F/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/08/08/Matx-s-first-blog/" class="archive-article-date">
-  	<time datetime="2020-08-08T08:31:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-08</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2020/08/08/Matx-s-first-blog/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Matx&#39;s first blog</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/08/08/Matx-s-first-blog/">Matx&#39;s first blog</a>
-    </h1>
+  <div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="javascript作用域" data-title="javascript作用域及提前声明" data-url="http://yoursite.com/2020/08/09/javascript%E4%BD%9C%E7%94%A8%E5%9F%9F/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+  
+  
+  
+  <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+<script>
+  var cloudTieConfig = {
+    url: "http://yoursite.com/2020/08/09/javascript%E4%BD%9C%E7%94%A8%E5%9F%9F/", 
+    sourceId: "javascript作用域",
+    productKey: "true",
+    target: "cloud-tie-wrapper"
+  };
+</script>
+<script src="//img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/08/08/hello-world/" class="archive-article-date">
-  	<time datetime="2020-08-08T08:17:34.453Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/08/08/hello-world/">Hello World</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
 
 
           </div>
@@ -318,8 +433,8 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
