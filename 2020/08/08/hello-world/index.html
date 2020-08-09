@@ -41,13 +41,43 @@
 <body>
   <div id="container" q-class="show:isCtnShow">
     <canvas id="anm-canvas" class="anm-canvas"></canvas>
-    <div class="left-col" q-class="show:isShow">
+    <div class="left-col" q-class="show:isShow" style="background: url(/images/nav-bg.jpg);">
       
-<div class="overlay" style="background: #fff"></div>
+<style type="text/css">
+	.wechat {
+    position: relative;
+    }
+    
+    .wechat img.qrcode {
+    position: absolute;
+    z-index: 99;
+    top: -135px;
+    right: -28px;
+    width: 12.5rem;
+    max-width: none;
+    height: 12.5rem;
+    transform: scale(0);
+    transform-origin: top right;
+    opacity: 0;
+    border: .3125rem solid #0085ba;
+    border-radius: .25rem;
+    -webkit-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+    
+    }
+    
+    .wechat:hover img.qrcode {
+    transform: scale(1);
+    opacity: 1;
+    }
+</style>
+<div class="overlay" style="background: #fff">
+</div>
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
-			<img src="/Users/mac/图片/me.jpg" class="js-avatar">
+			<img src="/images/me.jpg" class="js-avatar">
 		</a>
 		<hgroup>
 		  <h1 class="header-author"><a href="/"></a></h1>
@@ -82,15 +112,19 @@
 			<div class="social">
 				
 					<a class="github" target="_blank" href="https://github.com/ma-tianxiang/" title="github"><i class="icon-github"></i></a>
-		        
+				
 					<a class="weibo" target="_blank" href="http://weibo.cn/qr/userinfo?uid=5510163207" title="weibo"><i class="icon-weibo"></i></a>
-		        
+				
 					<a class="rss" target="_blank" href="#" title="rss"><i class="icon-rss"></i></a>
-		        
+				
 					<a class="zhihu" target="_blank" href="http://s.zhihu.com/BX0lJ" title="zhihu"><i class="icon-zhihu"></i></a>
-		        
-					<a class="qq" target="_blank" href="/Users/%E5%9B%BE%E7%89%87/qq.jpg" title="qq"><i class="icon-qq"></i></a>
-		        
+				
+					<a class="qq" target="_blank" href="/images/qq.jpg" title="qq"><i class="icon-qq"></i></a>
+				
+				<a class="weixin wechat" href="javascript:" target="_blank" title="微信">
+				<i class="icon-weixin"></i>
+				<img class="qrcode" src="/images/weixin.jpg" alt="微信二维码">
+				</a>
 			</div>
 		</nav>
 	</header>		
@@ -107,7 +141,7 @@
 	<div class="intrude-less">
 		<header id="header" class="inner">
 			<div class="profilepic">
-				<img src="/Users/mac/图片/me.jpg" class="js-avatar">
+				<img src="/images/me.jpg" class="js-avatar">
 			</div>
 			<hgroup>
 			  <h1 class="header-author js-header-author"></h1>
@@ -132,7 +166,7 @@
 			        
 						<a class="zhihu" target="_blank" href="http://s.zhihu.com/BX0lJ" title="zhihu"><i class="icon-zhihu"></i></a>
 			        
-						<a class="qq" target="_blank" href="/Users/%E5%9B%BE%E7%89%87/qq.jpg" title="qq"><i class="icon-qq"></i></a>
+						<a class="qq" target="_blank" href="/images/qq.jpg" title="qq"><i class="icon-qq"></i></a>
 			        
 				</div>
 			</nav>
@@ -208,13 +242,13 @@
                   <div class="reward-box">
                     
                     <div class="reward-box-item">
-                      <img class="reward-img" src="/Users/mac/图片/alipay.jpg">
+                      <img class="reward-img" src="/images/zhifubao.jpg">
                       <span class="reward-type">支付宝</span>
                     </div>
                     
                     
                     <div class="reward-box-item">
-                      <img class="reward-img" src="/Users/mac/图片/wechat.jpg">
+                      <img class="reward-img" src="/images/weixin.jpg">
                       <span class="reward-type">微信</span>
                     </div>
                     
