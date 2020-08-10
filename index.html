@@ -210,10 +210,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="definition"><a href="#definition" class="headerlink" title="definition"></a>definition</h1><p>构成函数主体的javascript代码在定义之时并不会执行，只有调用该函数时，它们才会执行。有四种方法调用JavaScript函数：<br>1 作为函数<br>2 作为方法<br>3 作为构造函数<br>4 通过它们的call()和apply()方法间接调用</p>
-<hr>
+        <h1 id="definition"><a href="#definition" class="headerlink" title="definition"></a>definition</h1><p>构成函数主体的javascript代码在定义之时并不会执行，只有调用该函数时，它们才会执行。有四种方法调用JavaScript函数：<br>1 作为函数<br>2 作为方法<br>3 作为构造函数<br>4 通过它们的call()和apply()方法间接调用<br>–</p>
 <h2 id="this"><a href="#this" class="headerlink" title="this"></a>this</h2><p>解析器在调用函数每次都会向函数内部传递进一个隐含的参数，这个参数就是this，this指向的是一个对象，这个对象我们称为函数的上下文。根据函数的调用方式的不同，this会指向不同的对象<br>注：this是一个关键字，不是变量，也不是属性名，JavaScript语法不允许给this赋值</p>
-<hr>
 <h2 id="函数调用"><a href="#函数调用" class="headerlink" title="函数调用"></a>函数调用</h2><p>对于普通的函数调用，函数的返回值成为调用表达式的值。如果该函数返回是因为解释器到达结尾，返回值就是undefined。如果函数返回是因为解释器执行到一条return语句，返回值就是return之后的表达式的值，如果return语句没有值，则返回undefined<br>根据ECMAScript3和非严格的ECMAScript5对函数调用的规定，调用上下文（this）的值是全局对象。而在严格模式下，调用上下文则是undefined</p>
    <figure class="highlight plain"><figcaption><span>fun()&#123;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">    console.log(this);</span><br><span class="line">&#125;</span><br><span class="line">var obj &#x3D; &#123;</span><br><span class="line">    name:&quot;孙悟空&quot;,</span><br><span class="line">    sayName:fun</span><br><span class="line">&#125;;</span><br><span class="line">fun();            &#x2F;&#x2F;控制台输出结果object Window 以函数形式调用时this是window</span><br></pre></td></tr></table></figure>
 <hr>
@@ -302,8 +300,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="1-全局作用域"><a href="#1-全局作用域" class="headerlink" title="1 全局作用域"></a>1 全局作用域</h2><p>-直接编写在script标签中的JS代码，都在全局作用域<br>-全局作用域在页面打开时（javascript解释器启动时）创建，页面关闭时销毁<br> -在全局作用域中，有一个全局对象Window，它代表的是一个浏览器的窗口，由浏览器创建，可以直接使用。<br> -在客户端javascript中，在其表示的浏览器窗口中的所有JavaScript代码中，Window对象充当了全局对象。这个全局Window对象有一个window属性引用其自身。<br>-在全局作用域中，创建的变量都会作为window对象的属性保存，创建的函数都会作为window对象的方法保存 </p>
-<hr>
+        <h2 id="1-全局作用域"><a href="#1-全局作用域" class="headerlink" title="1 全局作用域"></a>1 全局作用域</h2><p>-直接编写在script标签中的JS代码，都在全局作用域<br>-全局作用域在页面打开时（javascript解释器启动时）创建，页面关闭时销毁<br>-在全局作用域中，有一个全局对象Window，它代表的是一个浏览器的窗口，由浏览器创建，可以直接使用。<br>-在客户端javascript中，在其表示的浏览器窗口中的所有JavaScript代码中，Window对象充当了全局对象。这个全局Window对象有一个window属性引用其自身。<br>-在全局作用域中，创建的变量都会作为window对象的属性保存，创建的函数都会作为window对象的方法保存</p>
 <h2 id="2-函数作用域"><a href="#2-函数作用域" class="headerlink" title="2 函数作用域"></a>2 函数作用域</h2><p>-调用函数时创建函数作用域，函数执行完毕销毁<br>-每调用一次函数就会创建一个新的函数作用域，他们之间相互独立<br>-在函数作用域中操作一个变量时，它会先在自身作用域中寻找，若无，则向上一级作用域寻找（例如上一级嵌套的函数），直至全局作用域<br>-在函数作用域中访问同名全局变量，可以使用window全局对象</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">var a&#x3D;10;</span><br><span class="line">function fun()</span><br><span class="line">&#123;</span><br><span class="line"> var a&#x3D;&quot;局部变量a&quot;;</span><br><span class="line"> function fun2()</span><br><span class="line">  &#123;</span><br><span class="line">      console.log(&quot;a&#x3D;&quot;+window.a);</span><br><span class="line">  &#125;</span><br><span class="line">  fun2();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>输出结果”a=10”<br>-在函数作用域中也有声明提前的特性，<br>   使用var关键字声明的变量，会在函数中所有代码执行之前被声明，即变量在声明它们的函数体以及这个函数体嵌套的任意函数体都是有定义的（此处也应⭐️）<br>   函数声明也会在函数中所有代码执行之前声明<br>   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var scope&#x3D;&quot;global&quot;;</span><br><span class="line">function f()</span><br><span class="line">&#123;</span><br><span class="line">    console.log(scope); &#x2F;&#x2F;输出&quot;undefined&quot;,而不是&quot;global&quot;</span><br><span class="line">    var scope&#x3D;&quot;local&quot;;</span><br><span class="line">    console.log(scope) &#x2F;&#x2F;输出“local”</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>   你可能会误以为第一句输出是”global”,其实是:”undefined”.根据语法，它在自身作用域中找到了var的声明提前，所以不会选择上一级全局变量scope</p>
@@ -314,7 +311,6 @@
 <h2 id="3-变量声明提前"><a href="#3-变量声明提前" class="headerlink" title="3 变量声明提前"></a>3 变量声明提前</h2><p>-使用var关键字声明的变量，会在所有的代码执行前被声明。<br>  若不使用var关键字声明，变量不会被声明提前<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">console.log(&quot;a&#x3D;&quot;+a);       </span><br><span class="line">a&#x3D;123;                     </span><br><span class="line">此处输出结果报错  </span><br><span class="line">console.log(&quot;a&#x3D;&quot;+a); </span><br><span class="line">var a&#x3D;123;（相当于在console语句上面var a；在此处 a&#x3D;123;)           </span><br><span class="line">此处输出undifined（声明但未赋值）</span><br></pre></td></tr></table></figure></p>
 <hr>
 <h2 id="4-函数声明提前"><a href="#4-函数声明提前" class="headerlink" title="4 函数声明提前"></a>4 函数声明提前</h2><p>-使用函数声明形式创建的函数function函数（）{}<br> 他会在所有的代码执行前就被创建，我们可以在函数声明语句前调用<br>-但使用函数表达式创建的函数，不会被声明提前，不能在声明前调用</p>
-<hr>
 <h2 id="5-练习"><a href="#5-练习" class="headerlink" title="5 练习"></a>5 练习</h2><pre><code>1 var a=123;             
 function fun()&#123;          
     alert(a);               
@@ -347,7 +343,6 @@ function fun(a)&#123;
 fun(123);                  
 alert(a);  </code></pre>
 <p>1 undefined;123<br>2 undefined;456<br>3 undefined;123 形参=var a;alert(a);a=456 即var a=456;alert(a);<br>4 123;123</p>
-<hr>
 <h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p>Javascript权威指南<br><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1YW411T7GX">尚硅谷javascript基础</a></p>
 
       

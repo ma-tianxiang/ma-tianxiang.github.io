@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>调用JavaScript函数 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="definition构成函数主体的javascript代码在定义之时并不会执行，只有调用该函数时，它们才会执行。有四种方法调用JavaScript函数：1 作为函数2 作为方法3 作为构造函数4 通过它们的call()和apply()方法间接调用  this解析器在调用函数每次都会向函数内部传递进一个隐含的参数，这个参数就是this，this指向的是一个对象，这个对象我们称为函数的上下文。根据函数">
+  <meta name="description" content="definition构成函数主体的javascript代码在定义之时并不会执行，只有调用该函数时，它们才会执行。有四种方法调用JavaScript函数：1 作为函数2 作为方法3 作为构造函数4 通过它们的call()和apply()方法间接调用– this解析器在调用函数每次都会向函数内部传递进一个隐含的参数，这个参数就是this，this指向的是一个对象，这个对象我们称为函数的上下文。根据函数">
 <meta property="og:type" content="article">
 <meta property="og:title" content="调用JavaScript函数">
 <meta property="og:url" content="http://yoursite.com/2020/08/10/%E8%B0%83%E7%94%A8JavaScript%E5%87%BD%E6%95%B0/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="definition构成函数主体的javascript代码在定义之时并不会执行，只有调用该函数时，它们才会执行。有四种方法调用JavaScript函数：1 作为函数2 作为方法3 作为构造函数4 通过它们的call()和apply()方法间接调用  this解析器在调用函数每次都会向函数内部传递进一个隐含的参数，这个参数就是this，this指向的是一个对象，这个对象我们称为函数的上下文。根据函数">
+<meta property="og:description" content="definition构成函数主体的javascript代码在定义之时并不会执行，只有调用该函数时，它们才会执行。有四种方法调用JavaScript函数：1 作为函数2 作为方法3 作为构造函数4 通过它们的call()和apply()方法间接调用– this解析器在调用函数每次都会向函数内部传递进一个隐含的参数，这个参数就是this，this指向的是一个对象，这个对象我们称为函数的上下文。根据函数">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-08-10T05:30:01.000Z">
-<meta property="article:modified_time" content="2020-08-10T12:17:14.786Z">
+<meta property="article:modified_time" content="2020-08-10T13:12:30.386Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="javascript">
 <meta name="twitter:card" content="summary">
@@ -213,10 +213,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="definition"><a href="#definition" class="headerlink" title="definition"></a>definition</h1><p>构成函数主体的javascript代码在定义之时并不会执行，只有调用该函数时，它们才会执行。有四种方法调用JavaScript函数：<br>1 作为函数<br>2 作为方法<br>3 作为构造函数<br>4 通过它们的call()和apply()方法间接调用</p>
-<hr>
+        <h1 id="definition"><a href="#definition" class="headerlink" title="definition"></a>definition</h1><p>构成函数主体的javascript代码在定义之时并不会执行，只有调用该函数时，它们才会执行。有四种方法调用JavaScript函数：<br>1 作为函数<br>2 作为方法<br>3 作为构造函数<br>4 通过它们的call()和apply()方法间接调用<br>–</p>
 <h2 id="this"><a href="#this" class="headerlink" title="this"></a>this</h2><p>解析器在调用函数每次都会向函数内部传递进一个隐含的参数，这个参数就是this，this指向的是一个对象，这个对象我们称为函数的上下文。根据函数的调用方式的不同，this会指向不同的对象<br>注：this是一个关键字，不是变量，也不是属性名，JavaScript语法不允许给this赋值</p>
-<hr>
 <h2 id="函数调用"><a href="#函数调用" class="headerlink" title="函数调用"></a>函数调用</h2><p>对于普通的函数调用，函数的返回值成为调用表达式的值。如果该函数返回是因为解释器到达结尾，返回值就是undefined。如果函数返回是因为解释器执行到一条return语句，返回值就是return之后的表达式的值，如果return语句没有值，则返回undefined<br>根据ECMAScript3和非严格的ECMAScript5对函数调用的规定，调用上下文（this）的值是全局对象。而在严格模式下，调用上下文则是undefined</p>
    <figure class="highlight plain"><figcaption><span>fun()&#123;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">    console.log(this);</span><br><span class="line">&#125;</span><br><span class="line">var obj &#x3D; &#123;</span><br><span class="line">    name:&quot;孙悟空&quot;,</span><br><span class="line">    sayName:fun</span><br><span class="line">&#125;;</span><br><span class="line">fun();            &#x2F;&#x2F;控制台输出结果object Window 以函数形式调用时this是window</span><br></pre></td></tr></table></figure>
 <hr>
