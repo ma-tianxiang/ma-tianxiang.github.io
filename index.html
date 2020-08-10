@@ -214,7 +214,7 @@
 <hr>
 <h2 id="this"><a href="#this" class="headerlink" title="this"></a>this</h2><p>解析器在调用函数每次都会向函数内部传递进一个隐含的参数，这个参数就是this，this指向的是一个对象，这个对象我们称为函数的上下文。根据函数的调用方式的不同，this会指向不同的对象<br>注：this是一个关键字，不是变量，也不是属性名，JavaScript语法不允许给this赋值</p>
 <hr>
-<p>##函数调用<br>对于普通的函数调用，函数的返回值成为调用表达式的值。如果该函数返回是因为解释器到达结尾，返回值就是undefined。如果函数返回是因为解释器执行到一条return语句，返回值就是return之后的表达式的值，如果return语句没有值，则返回undefined<br>根据ECMAScript3和非严格的ECMAScript5对函数调用的规定，调用上下文（this）的值是全局对象。而在严格模式下，调用上下文则是undefined<br>function fun(){<br>    console.log(this);<br>}<br>var obj = {<br>    name:”孙悟空”,<br>    sayName:fun<br>};<br>fun();            //控制台输出结果object Window 以函数形式调用时this是window</p>
+<h2 id="函数调用"><a href="#函数调用" class="headerlink" title="函数调用"></a>函数调用</h2><p>对于普通的函数调用，函数的返回值成为调用表达式的值。如果该函数返回是因为解释器到达结尾，返回值就是undefined。如果函数返回是因为解释器执行到一条return语句，返回值就是return之后的表达式的值，如果return语句没有值，则返回undefined<br>根据ECMAScript3和非严格的ECMAScript5对函数调用的规定，调用上下文（this）的值是全局对象。而在严格模式下，调用上下文则是undefined<br>function fun(){<br>    console.log(this);<br>}<br>var obj = {<br>    name:”孙悟空”,<br>    sayName:fun<br>};<br>fun();            //控制台输出结果object Window 以函数形式调用时this是window</p>
 <hr>
 <p>function fun(){<br>    console.log(this.name);<br>}<br>var obj = {<br>    name:”孙悟空”,<br>    sayName:fun<br>};<br>var obj2 = {<br>    name:”沙和尚”,<br>    sayName:fun<br>};<br>var name = “全局的name属性”;<br>fun();                 //输出”全局的name属性”因为以函数形式调用，this是window，可以理解为window.fun();</p>
 <hr>
@@ -224,7 +224,7 @@
 <h2 id="利用this"><a href="#利用this" class="headerlink" title="利用this"></a>利用this</h2><p>var name = “全局“；//创建一个name变量<br>function fun(){<br>    console.log(name);<br>}<br>var obj = {<br>    name = “孙悟空”,<br>    sayName = fun<br>}<br>var obj2 = {<br>    name = “沙和尚”,<br>    sayName = fun<br>}<br>obj.sayName();   //输出”全局”，因为fun()函数内name无定义到上一级寻找<br>obj2.sayName();  //输出”全局”，同理</p>
 <hr>
 <p>var name = “全局“；//创建一个name变量<br>function fun(){<br>    console.log(this.name);   //⭐️⭐️⭐️<br>}<br>var obj = {<br>    name = “孙悟空”,<br>    sayName = fun<br>}<br>var obj2 = {<br>    name = “沙和尚”,<br>    sayName = fun<br>}<br>obj.sayName();   //输出”孙悟空”<br>obj2.sayName();  //输出”沙和尚”</p>
-<h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><p>var o = {                         //对象o<br>    m: function() {               //对象中的方法m()<br>        var self = this;          //将this的值保存至self变量中<br>        console.log(this === o);  //输出true，this就是对象o(方法调用)<br>        f();                      //调用辅助函数f()<br>        function f(){             //定义嵌套函数f()<br>            console.log(this === o);//false,this的值是全局或undefined(函数调用)<br>            console.log(this === o);//true,self指外部函数的this值<br>        }<br>    }<br>}</p>
+<h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><p>var o = {                         ——-对象o<br>    m: function() {               ——-对象中的方法m()<br>        var self = this;          ——-将this的值保存至self变量中<br>        console.log(this === o);  ——-输出true，this就是对象o(方法调用)<br>        f();                      ——-调用辅助函数f()<br>        function f(){             ——-定义嵌套函数f()<br>            console.log(this === o);——-false,this的值是全局或undefined(函数调用)<br>            console.log(this === o);——-true,self指外部函数的this值<br>        }<br>    }<br>}</p>
 <h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p>尚硅谷视频:<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1YW411T7GX">https://www.bilibili.com/video/BV1YW411T7GX</a>?<br>JavaScript权威指南</p>
 
       
